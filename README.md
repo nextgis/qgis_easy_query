@@ -1,2 +1,3 @@
 # qgis_easy_query
-NextGIS Easy Query plugin 
+
+Easy query plugin for QGIS 3
