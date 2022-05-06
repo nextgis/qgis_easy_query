@@ -6,29 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>491</width>
+    <width>463</width>
     <height>581</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Easy Query</string>
+   <string>NextGIS EasyQuery</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="2" colspan="3">
-    <spacer name="horizontalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>189</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="10" column="0" rowspan="2" colspan="5">
-    <widget class="QPushButton" name="runButton">
+   <item row="2" column="0" colspan="2">
+    <widget class="QLabel" name="label_2">
      <property name="font">
       <font>
        <weight>75</weight>
@@ -36,11 +23,63 @@
       </font>
      </property>
      <property name="text">
-      <string>5. Выполнить</string>
+      <string>2. Configure conditions for query:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
-   <item row="7" column="0" colspan="2">
+   <item row="3" column="0" colspan="6">
+    <widget class="QTableWidget" name="conditionsQueryTable">
+     <column>
+      <property name="text">
+       <string>Field</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Operator</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Value</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="4" column="2" colspan="2">
+    <widget class="QPushButton" name="addConditionButton">
+     <property name="text">
+      <string>Add condition</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="4" colspan="2">
+    <widget class="QPushButton" name="deleteConditionButton">
+     <property name="text">
+      <string>Delete condition</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>3. Select query mode:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
     <widget class="QLabel" name="label_4">
      <property name="font">
       <font>
@@ -49,28 +88,14 @@
       </font>
      </property>
      <property name="text">
-      <string>4. Выберите результат:</string>
+      <string>4. Select type of result:</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
-   <item row="6" column="0" colspan="5">
-    <widget class="QComboBox" name="conditionModeCombobox">
-     <item>
-      <property name="text">
-       <string>Все условия должны выполняться</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Хотя бы одно условие должно выполняться</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="14" column="0" colspan="4">
+   <item row="13" column="0" colspan="3">
     <spacer name="horizontalSpacer_8">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -83,86 +108,34 @@
      </property>
     </spacer>
    </item>
-   <item row="2" column="0" colspan="5">
-    <widget class="QLabel" name="label_2">
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
+   <item row="13" column="3" colspan="2">
+    <widget class="QPushButton" name="aboutButton">
      <property name="text">
-      <string>2. Определите условия для выборки:</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      <string>About</string>
      </property>
     </widget>
    </item>
-   <item row="9" column="0">
-    <spacer name="verticalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="4" column="2">
-    <widget class="QPushButton" name="addConditionButton">
+   <item row="13" column="5">
+    <widget class="QPushButton" name="closeButton">
      <property name="text">
-      <string>Добавить условие</string>
+      <string>Close</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="0" colspan="2">
-    <widget class="QLabel" name="label_3">
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>3. Выберите режим выборки:</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="0" colspan="5">
-    <widget class="QComboBox" name="resultCombobox">
-     <item>
-      <property name="text">
-       <string>Выделение объектов в слое</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Новый слой с результатами выборки</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <spacer name="horizontalSpacer_5">
+   <item row="4" column="0" colspan="2">
+    <spacer name="horizontalSpacer">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>294</width>
+       <width>40</width>
        <height>20</height>
       </size>
      </property>
     </spacer>
    </item>
-   <item row="5" column="2" colspan="3">
+   <item row="5" column="1" colspan="5">
     <spacer name="horizontalSpacer_3">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -175,59 +148,24 @@
      </property>
     </spacer>
    </item>
-   <item row="14" column="4">
-    <widget class="QPushButton" name="closeButton">
-     <property name="text">
-      <string>Закрыть</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="3" colspan="2">
-    <widget class="QPushButton" name="deleteConditionButton">
-     <property name="text">
-      <string>Удалить условие</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="label">
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>1. Выберите слой для выборки:</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0" colspan="5">
-    <widget class="QTableWidget" name="conditionsQueryTable">
-     <column>
-      <property name="text">
-       <string>Поле</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Оператор</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Значение</string>
-      </property>
-     </column>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="5">
+   <item row="1" column="0" colspan="6">
     <widget class="QgsMapLayerComboBox" name="LayerCombobox"/>
    </item>
-   <item row="7" column="2" colspan="3">
+   <item row="6" column="0" colspan="6">
+    <widget class="QComboBox" name="conditionModeCombobox">
+     <item>
+      <property name="text">
+       <string>All conditions should be met</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>At least one condition should be met</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="7" column="1" colspan="5">
     <spacer name="horizontalSpacer_6">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -240,7 +178,86 @@
      </property>
     </spacer>
    </item>
-   <item row="13" column="0">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>1. Select a layer for query:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" colspan="5">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>189</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="8" column="0" colspan="6">
+    <widget class="QComboBox" name="resultCombobox">
+     <item>
+      <property name="text">
+       <string>Feature selection</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>New layer with query results</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="10" column="0" colspan="6">
+    <widget class="QPushButton" name="runButton">
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>5.Execute</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0" colspan="6">
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="11" column="0" colspan="6">
+    <widget class="QCheckBox" name="autoZoomCheckBox">
+     <property name="text">
+      <string>Zoom to selected features</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="0" colspan="6">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -252,16 +269,6 @@
       </size>
      </property>
     </spacer>
-   </item>
-   <item row="12" column="0" colspan="5">
-    <widget class="QCheckBox" name="autoZoomCheckBox">
-     <property name="text">
-      <string>Автоматически приближать карту к результатам выборки</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>

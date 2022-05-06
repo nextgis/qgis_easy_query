@@ -7,7 +7,9 @@ from PyQt5.QtWidgets import *
 from qgis.core import *
 from qgis.gui import *
 import processing
-import numpy as np
+import numpy as n
+from qgis.utils import iface
+from .aboutdialog import AboutDialog
 
 FORM_CLASS, _ = uic.loadUiType(os.path.abspath(os.path.join(os.path.dirname(__file__), 'qgis_easy_query.ui')))
 
@@ -22,14 +24,17 @@ class EasyQueryDialog(QWidget, FORM_CLASS):
         self.setupUi(self)
         self.clear_table()
 
+        self.helpIsActive = False
+
         self.addConditionButton.clicked.connect(self.add_condition)
         self.deleteConditionButton.clicked.connect(self.delete_condition)
+        self.aboutButton.clicked.connect(self.about)
         self.runButton.clicked.connect(self.run)
         self.closeButton.clicked.connect(self.cancel)
 
         self.LayerCombobox.setFilters(QgsMapLayerProxyModel.VectorLayer)
 
-        self.LayerCombobox.currentIndexChanged.connect(self.clear_table)
+        #self.LayerCombobox.currentIndexChanged.connect(self.clear_table)
 
         header = self.conditionsQueryTable.horizontalHeader()
         header.setSectionResizeMode(0, QHeaderView.ResizeToContents)
@@ -47,8 +52,8 @@ class EasyQueryDialog(QWidget, FORM_CLASS):
 
     def add_condition(self):
         if not self.LayerCombobox.currentText():
-            QMessageBox.information(None, u'Внимание!',
-                                    u'Сначала необходимо выбрать слой')
+            QMessageBox.information(None, self.tr(u'Attention!'),
+                                    self.tr(u'Layer must be selected'))
             return
 
         row_count = self.conditionsQueryTable.rowCount()
@@ -128,25 +133,25 @@ class EasyQueryDialog(QWidget, FORM_CLASS):
 
     def run(self):
         if not self.LayerCombobox.currentText():
-            QMessageBox.information(None, u'Внимание!',
-                                    u'Необходимо выбрать слой')
+            QMessageBox.information(None, self.tr(u'Attention!'),
+                                    self.tr(u'Layer must be selected'))
             return
 
         row_count = self.conditionsQueryTable.rowCount()
         if row_count == 0:
-            QMessageBox.information(None, u'Внимание!',
-                                    u'Не задано ни одного условия')
+            QMessageBox.information(None, self.tr(u'Attention!'),
+                                    self.tr(u'No conditions are set'))
 
         conditions = []
         for i in range(0,row_count):
             if not self.conditionsQueryTable.cellWidget(i,0).currentText():
-                QMessageBox.information(None, u'Внимание!',
-                                        u'У всех условий должно быть выбрано поле')
+                QMessageBox.information(None, self.tr(u'Attention!'),
+                                        self.tr(u'Field must be selected for all conditions'))
                 return
 
             if not self.conditionsQueryTable.cellWidget(i,2).currentText():
-                QMessageBox.information(None, u'Внимание!',
-                                        u'У всех условий должно быть выбрано значение')
+                QMessageBox.information(None, self.tr(u'Attention!'),
+                                        self.tr(u'Value must be selected for all conditions'))
                 return
 
             current_field = self.conditionsQueryTable.cellWidget(i,0).currentText()
@@ -173,12 +178,34 @@ class EasyQueryDialog(QWidget, FORM_CLASS):
         if self.resultCombobox.currentIndex() == 0:
             # select
             self.LayerCombobox.currentLayer().selectByExpression(general_condition)
+
+            if self.autoZoomCheckBox.isChecked():
+                if self.LayerCombobox.currentLayer().selectedFeatureCount() > 0:
+                    box = self.LayerCombobox.currentLayer().boundingBoxOfSelected()
+                    iface.mapCanvas().setExtent(box)
+                    iface.mapCanvas().refresh()
+
         elif self.resultCombobox.currentIndex() == 1:
             # new layer
             res = processing.runAndLoadResults("native:extractbyexpression",
                            {'INPUT': self.LayerCombobox.currentLayer(),
                             'EXPRESSION': general_condition,
                             'OUTPUT': 'TEMPORARY_OUTPUT'})
+
+            if self.autoZoomCheckBox.isChecked():
+                new_layer_id = res['OUTPUT']
+                new_layer = QgsProject.instance().mapLayer(new_layer_id)
+                if new_layer.featureCount() > 0:
+                    iface.mapCanvas().setExtent(new_layer.extent())
+                    iface.mapCanvas().refresh()
+
+    def about(self):
+        if not self.helpIsActive:
+            self.dlg = AboutDialog()
+            self.dlg.show()
+            self.helpIsActive = True
+        else:
+            self.dlg.show()
 
     def cancel(self):
         self.close()

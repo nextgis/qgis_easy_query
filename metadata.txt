@@ -1,13 +1,13 @@
 [general]
-name=EasyQuery
+name=NextGIS EasyQuery
 qgisMinimumVersion=3.16
-description=Конструктор запросов к векторным слоям
+description=Visual constructor for simple attribute queries
 version=1.0.0
 author=NextGIS
 email=info@nextgis.ru
-about=Конструктор запросов к векторным слоям
-tracker=mailto:support@nextgis.ru
-repository=support@nextgis.ru
+about=Plugin is an alternative for Select features using expression tool. The idea is to provide less comprehensive, but more intuitive way to run simple queries.
+tracker=https://github.com/nextgis/qgis_easy_query/issues
+repository=https://github.com/nextgis/qgis_easy_query
 tags=vector
 homepage=https://nextgis.ru
 category=Vector

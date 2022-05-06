@@ -28,29 +28,39 @@ class QGISEasyQuery():
 
         # Declare instance attributes
         self.actions = []
-        self.menu = u'Easy Query'
+        self.menu = u'NextGIS Easy Query'
 
-        self.toolbar = self.iface.addToolBar(u'Easy Query')
-        self.toolbar.setObjectName(u'Easy Query')
+        self.toolbar = self.iface.addToolBar(u'NextGIS EasyQuery')
+        self.toolbar.setObjectName(u'NextGIS EasyQuery')
 
         self.pluginIsActive = False
+
+        _current_path = os.path.abspath(os.path.dirname(__file__))
+
+        overrideLocale = QSettings().value('locale/overrideFlag', False, type=bool)
+        localeFullName = QSettings().value('locale/userLocale', '')
+        translationPath = os.path.join(_current_path, 'i18n', 'qgis_easy_query_' + localeFullName + '.qm')
+
+        self.localePath = translationPath
+        if QFileInfo(self.localePath).exists():
+            self.translator = QTranslator()
+            self.translator.load(self.localePath)
+            QCoreApplication.installTranslator(self.translator)
 
 
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
 
-        # Import EGRN
         _current_path = os.path.abspath(os.path.dirname(__file__))
-
         
         easy_query_icon_path = os.path.abspath(os.path.join(_current_path,'icon.png'))
         easy_query_icon = QIcon(easy_query_icon_path)
 
-        easy_query_action = QAction(easy_query_icon, u'Простые выборки', self.iface.mainWindow())
+        easy_query_action = QAction(easy_query_icon, u'NextGIS EasyQuery', self.iface.mainWindow())
         easy_query_action.triggered.connect(self.easy_query)
         easy_query_action.setEnabled(True)
-        easy_query_action.setStatusTip(u'Простые выборки')
-        easy_query_action.setWhatsThis(u'Простые выборки')
+        easy_query_action.setStatusTip(u'NextGIS EasyQuery')
+        easy_query_action.setWhatsThis(u'NextGIS EasyQuery')
         self.toolbar.addAction(easy_query_action)
         self.iface.addPluginToVectorMenu(self.menu, easy_query_action)
         self.actions.append(easy_query_action)
