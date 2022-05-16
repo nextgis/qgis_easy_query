@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import *
 from qgis.core import *
 from qgis.gui import *
 import processing
-import numpy as n
+import numpy as np
 from qgis.utils import iface
 from .aboutdialog import AboutDialog
 
@@ -71,6 +71,7 @@ class EasyQueryDialog(QWidget, FORM_CLASS):
         current_values_combobox.setEditable(True)
         self.conditionsQueryTable.setCellWidget(new_row_id, 2, current_values_combobox)
 
+        self.field_combobox_changed(current_fields_comboBox, current_values_combobox)
         current_fields_comboBox.currentIndexChanged.connect(
             lambda: self.field_combobox_changed(current_fields_comboBox, current_values_combobox))
 
@@ -128,7 +129,8 @@ class EasyQueryDialog(QWidget, FORM_CLASS):
                 val_50 = str(np.nanpercentile(all_values, 50))
                 val_75 = str(np.nanpercentile(all_values, 75))
                 current_values_combobox.addItems([val_min, val_25, val_50, val_75, val_max])
-            except:
+            except Exception as e:
+                print(str(e))
                 pass
 
     def run(self):
