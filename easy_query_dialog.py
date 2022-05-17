@@ -115,6 +115,10 @@ class EasyQueryDialog(QWidget, FORM_CLASS):
                     continue
                 else:
                     unique_values.append(value)
+            try:
+                unique_values.sort()
+            except:
+                pass
             current_values_combobox.addItems(unique_values)
 
         if numerical_mode == True:
@@ -129,8 +133,7 @@ class EasyQueryDialog(QWidget, FORM_CLASS):
                 val_50 = str(np.nanpercentile(all_values, 50))
                 val_75 = str(np.nanpercentile(all_values, 75))
                 current_values_combobox.addItems([val_min, val_25, val_50, val_75, val_max])
-            except Exception as e:
-                print(str(e))
+            except:
                 pass
 
     def run(self):
