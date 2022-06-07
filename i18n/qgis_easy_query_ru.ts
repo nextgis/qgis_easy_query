@@ -92,12 +92,12 @@
         <translation>Новый слой с результатами выборки</translation>
     </message>
     <message>
-        <location filename="../qgis_easy_query.ui" line="233"/>
+        <location filename="../qgis_easy_query.ui" line="238"/>
         <source>5.Execute</source>
         <translation>5. Выполнить</translation>
     </message>
     <message>
-        <location filename="../qgis_easy_query.ui" line="253"/>
+        <location filename="../qgis_easy_query.ui" line="258"/>
         <source>Zoom to selected features</source>
         <translation>Автоматически приблизить карту к результату выборки</translation>
     </message>
@@ -124,31 +124,36 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;NextGIS EasyQuery&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../qgis_easy_query.ui" line="224"/>
+        <source>Apply filter to current layer</source>
+        <translation>Применить фильтр к текущему слою</translation>
+    </message>
 </context>
 <context>
     <name>EasyQueryDialog</name>
     <message>
-        <location filename="../easy_query_dialog.py" line="153"/>
+        <location filename="../easy_query_dialog.py" line="172"/>
         <source>Attention!</source>
         <translation>Внимание!</translation>
     </message>
     <message>
-        <location filename="../easy_query_dialog.py" line="136"/>
+        <location filename="../easy_query_dialog.py" line="155"/>
         <source>Layer must be selected</source>
         <translation>Должен быть выбран слой</translation>
     </message>
     <message>
-        <location filename="../easy_query_dialog.py" line="142"/>
+        <location filename="../easy_query_dialog.py" line="161"/>
         <source>No conditions are set</source>
         <translation>Не заданы условия выборки</translation>
     </message>
     <message>
-        <location filename="../easy_query_dialog.py" line="148"/>
+        <location filename="../easy_query_dialog.py" line="167"/>
         <source>Field must be selected for all conditions</source>
         <translation>У каждого условия должно быть выбрано поле</translation>
     </message>
     <message>
-        <location filename="../easy_query_dialog.py" line="153"/>
+        <location filename="../easy_query_dialog.py" line="172"/>
         <source>Value must be selected for all conditions</source>
         <translation>У каждого условия должно быть задано значение</translation>
     </message>

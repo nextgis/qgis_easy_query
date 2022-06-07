@@ -219,6 +219,11 @@
        <string>New layer with query results</string>
       </property>
      </item>
+     <item>
+      <property name="text">
+       <string>Apply filter to current layer</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="10" column="0" colspan="6">

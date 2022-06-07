@@ -32,6 +32,18 @@ class EasyQueryDialog(QWidget, FORM_CLASS):
         self.runButton.clicked.connect(self.run)
         self.closeButton.clicked.connect(self.cancel)
 
+        _current_path = os.path.abspath(os.path.dirname(__file__))
+
+        overrideLocale = QSettings().value('locale/overrideFlag', False, type=bool)
+        localeFullName = QSettings().value('locale/userLocale', '')
+        translationPath = os.path.join(_current_path, 'i18n', 'qgis_easy_query_' + localeFullName + '.qm')
+
+        self.localePath = translationPath
+        if QFileInfo(self.localePath).exists():
+            self.translator = QTranslator()
+            self.translator.load(self.localePath)
+            QCoreApplication.installTranslator(self.translator)
+
         self.LayerCombobox.setFilters(QgsMapLayerProxyModel.VectorLayer)
 
         #self.LayerCombobox.currentIndexChanged.connect(self.clear_table)
@@ -40,6 +52,8 @@ class EasyQueryDialog(QWidget, FORM_CLASS):
         header.setSectionResizeMode(0, QHeaderView.ResizeToContents)
         header.setSectionResizeMode(1, QHeaderView.ResizeToContents)
         header.setSectionResizeMode(2, QHeaderView.Stretch)
+
+
 
     def create_operator_combobox(self):
         operator_combobox = QComboBox()
@@ -203,6 +217,16 @@ class EasyQueryDialog(QWidget, FORM_CLASS):
                 if new_layer.featureCount() > 0:
                     iface.mapCanvas().setExtent(new_layer.extent())
                     iface.mapCanvas().refresh()
+
+        elif self.resultCombobox.currentIndex() == 2:
+            # filter
+            self.LayerCombobox.currentLayer().setSubsetString(general_condition)
+            if self.autoZoomCheckBox.isChecked():
+                if self.LayerCombobox.currentLayer().featureCount() > 0:
+                    box = self.LayerCombobox.currentLayer().extent()
+                    iface.mapCanvas().setExtent(box)
+                    iface.mapCanvas().refresh()
+
 
     def about(self):
         if not self.helpIsActive:
