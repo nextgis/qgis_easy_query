@@ -252,7 +252,12 @@ class EasyQueryDialog(QWidget, FORM_CLASS):
             if self.autoZoomCheckBox.isChecked():
                 if self.LayerCombobox.currentLayer().selectedFeatureCount() > 0:
                     box = self.LayerCombobox.currentLayer().boundingBoxOfSelected()
-                    iface.mapCanvas().setExtent(box)
+
+                    xform = QgsCoordinateTransform(self.LayerCombobox.currentLayer().crs(),
+                                                   QgsProject.instance().crs(),
+                                                   QgsProject.instance())
+
+                    iface.mapCanvas().setExtent(xform.transform(box))
                     iface.mapCanvas().refresh()
 
         elif self.resultCombobox.currentIndex() == 1:
@@ -266,7 +271,12 @@ class EasyQueryDialog(QWidget, FORM_CLASS):
                 new_layer_id = res['OUTPUT']
                 new_layer = QgsProject.instance().mapLayer(new_layer_id)
                 if new_layer.featureCount() > 0:
-                    iface.mapCanvas().setExtent(new_layer.extent())
+
+                    xform = QgsCoordinateTransform(new_layer.crs(),
+                                                   QgsProject.instance().crs(),
+                                                   QgsProject.instance())
+
+                    iface.mapCanvas().setExtent(xform.transform(new_layer.extent()))
                     iface.mapCanvas().refresh()
 
         elif self.resultCombobox.currentIndex() == 2:
@@ -274,10 +284,14 @@ class EasyQueryDialog(QWidget, FORM_CLASS):
             self.LayerCombobox.currentLayer().setSubsetString(general_condition)
             if self.autoZoomCheckBox.isChecked():
                 if self.LayerCombobox.currentLayer().featureCount() > 0:
-                    box = self.LayerCombobox.currentLayer().extent()
-                    iface.mapCanvas().setExtent(box)
-                    iface.mapCanvas().refresh()
 
+                    xform = QgsCoordinateTransform(self.LayerCombobox.currentLayer().crs(),
+                                                   QgsProject.instance().crs(),
+                                                   QgsProject.instance())
+
+                    box = self.LayerCombobox.currentLayer().extent()
+                    iface.mapCanvas().setExtent(xform.transform(box))
+                    iface.mapCanvas().refresh()
 
     def about(self):
         if not self.helpIsActive:
