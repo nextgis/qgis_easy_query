@@ -112,8 +112,6 @@ class EasyQueryDialog(QWidget, FORM_CLASS):
 
         idx = fields.indexFromName(current_fields_comboBox.currentField())
 
-        print (current_type.lower())
-
         if current_type.lower() in ['string', 'text', 'char', 'varchar']:
             text_mode = True
             numerical_mode = False
