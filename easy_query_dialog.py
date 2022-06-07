@@ -98,6 +98,7 @@ class EasyQueryDialog(QWidget, FORM_CLASS):
 
     def field_combobox_changed(self, current_fields_comboBox, current_values_combobox):
         current_values_combobox.clear()
+        current_type = None
         try:
             fields = current_fields_comboBox.layer().fields()
         except:
@@ -106,19 +107,40 @@ class EasyQueryDialog(QWidget, FORM_CLASS):
             if field.name() == current_fields_comboBox.currentField():
                 current_type = field.typeName()
 
+        if current_type is None:
+            return
+
         idx = fields.indexFromName(current_fields_comboBox.currentField())
 
-        if current_type.lower() in ['string', 'text', 'char', 'varchar', 'datetime']:
+        print (current_type.lower())
+
+        if current_type.lower() in ['string', 'text', 'char', 'varchar']:
             text_mode = True
             numerical_mode = False
+            date_mode = False
+            datetime_mode = False
         elif current_type.lower() in ['integer', 'integer32', 'integer64', 'real', 'double', 'float']:
             text_mode = False
             numerical_mode = True
+            date_mode = False
+            datetime_mode = False
+        elif current_type.lower() in ['date']:
+            text_mode = False
+            numerical_mode = False
+            date_mode = True
+            datetime_mode = False
+        elif current_type.lower() in ['datetime']:
+            text_mode = False
+            numerical_mode = False
+            date_mode = False
+            datetime_mode = True
         else:
             text_mode = False
             numerical_mode = False
+            date_mode = False
+            datetime_mode = False
 
-        if (text_mode == False) and (numerical_mode == False):
+        if (text_mode == False) and (numerical_mode == False) and (date_mode == False) and (datetime_mode == False):
             current_values_combobox.clear()
 
         if text_mode == True:
@@ -149,6 +171,35 @@ class EasyQueryDialog(QWidget, FORM_CLASS):
                 current_values_combobox.addItems([val_min, val_25, val_50, val_75, val_max])
             except:
                 pass
+
+        if date_mode == True:
+            unique_values_raw = list(current_fields_comboBox.layer().uniqueValues(idx))
+            unique_values = []
+            for value in unique_values_raw:
+                try:
+                    unique_values.append(value.toString("yyyy-MM-dd"))
+                except:
+                    pass
+            try:
+                unique_values.sort()
+            except:
+                pass
+            current_values_combobox.addItems(unique_values)
+
+        if datetime_mode == True:
+            unique_values_raw = list(current_fields_comboBox.layer().uniqueValues(idx))
+            unique_values = []
+            for value in unique_values_raw:
+                try:
+                    unique_values.append(value.toString("yyyy-MM-ddTHH:mm:ss"))
+                except:
+                    pass
+            try:
+                unique_values.sort()
+            except:
+                pass
+            current_values_combobox.addItems(unique_values)
+
 
     def run(self):
         if not self.LayerCombobox.currentText():
@@ -181,7 +232,7 @@ class EasyQueryDialog(QWidget, FORM_CLASS):
 
             current_operator = self.conditionsQueryTable.cellWidget(i,1).currentText()
             current_value = self.conditionsQueryTable.cellWidget(i,2).currentText()
-            if current_type.lower() in ['string', 'text', 'char', 'varchar']:
+            if current_type.lower() in ['string', 'text', 'char', 'varchar', 'date', 'datetime']:
                 current_value = '\'%s\'' % current_value
 
             current_condition = '(\"%s\" %s %s)' % (current_field, current_operator, current_value)
