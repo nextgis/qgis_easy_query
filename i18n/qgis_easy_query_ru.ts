@@ -1,12 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ru">
+<TS version="2.1" language="ru_RU">
 <context>
-    <name>AboutDialog</name>
+    <name>AboutDialogBase</name>
     <message>
-        <location filename="../aboutdialog.py" line="42"/>
-        <source>&lt;p&gt;Easy to use queries.&lt;/p&gt;&lt;p&gt;EasyQuery is an alternative for Select features using expression tool. The idea is to provide less comprehensive, but more intuitive way to run simple queries.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Developers&lt;/strong&gt;: &lt;a href=&quot;http://nextgis.org&quot;&gt;NextGIS&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Homepage&lt;/strong&gt;: &lt;a href=&quot;https://github.com/nextgis/qgis_easy_query&quot;&gt;https://github.com/nextgis/qgis_easy_query&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Please report bugs at &lt;a href=&quot;https://github.com/nextgis/qgis_easy_query/issues&quot;&gt;bugtracker&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Other helpful services by NextGIS:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Convenient up-to-date data extracts for any place in the world: &lt;a href=&quot;https://data.nextgis.com&quot;&gt;https://data.nextgis.com&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Fully featured Web GIS service: &lt;a href=&quot;https://nextgis.com/nextgis-com/plans&quot;&gt;https://nextgis.com/nextgis-com/plans&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>&lt;p&gt;Простые запросы.&lt;/p&gt;&lt;p&gt;EasyQuery - альтернатива инструменту Выбрать объекты по выражению. Идея EasyQuery в том, чтобы предоставить менее функциональный, но более простой и интуитивный инструмент для простых запросов и выборок.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Разработчик&lt;/strong&gt;: &lt;a href=&quot;http://nextgis.ru&quot;&gt;NextGIS&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Домашняя страница:&lt;/strong&gt;: &lt;a href=&quot;https://github.com/nextgis/qgis_easy_query&quot;&gt;https://github.com/nextgis/qgis_easy_query&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Сообщения об ошибках можно оставлять в &lt;a href=&quot;https://github.com/nextgis/qgis_easy_query/issues&quot;&gt;трекере&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Полезные сервисы NextGIS:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Удобные выгрузки актуальных геоданных: &lt;a href=&quot;https://data.nextgis.com&quot;&gt;https://data.nextgis.com&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Полнофункциональный Веб ГИС сервис: &lt;a href=&quot;https://nextgis.ru/nextgis-com/plans&quot;&gt;https://nextgis.ru/nextgis-com/plans&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;</translation>
+        <location filename="../about_dialog_base.ui" line="14"/>
+        <source>About {plugin_name}</source>
+        <translation>О {plugin_name}</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog_base.ui" line="27"/>
+        <source>&lt;p align=&quot;center&quot;&gt;{plugin_name}&lt;/p&gt;</source>
+        <translation>&lt;p align=&quot;center&quot;&gt;{plugin_name}&lt;/p&gt;</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog_base.ui" line="40"/>
+        <source>&lt;p&gt;{description}&lt;/p&gt;
+&lt;p&gt;{about}&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Developers:&lt;/b&gt; &lt;a href=&quot;{main_url}&quot;&gt;{authors}&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Homepage:&lt;/b&gt; &lt;a href=&quot;{homepage_url}&quot;&gt;{homepage_url}&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Video with an overview of the plugin:&lt;/b&gt; &lt;a href=&quot;{video_url}&quot;&gt;
+{video_url}&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Please report bugs at&lt;/b&gt; &lt;a href=&quot;{tracker_url}&quot;&gt;bugtracker&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Other helpful services by NextGIS:
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;Convenient up-to-date data extracts for any place in the world:
+&lt;a href=&quot;{main_url}&quot;&gt;{main_url}&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Fully featured Web GIS service:
+&lt;a href=&quot;{main_url}/nextgis-com/plans&quot;&gt;
+{main_url}/nextgis-com/plans&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;/p&gt;</source>
+        <translation>&lt;p&gt;{description}&lt;/p&gt;
+&lt;p&gt;{about}&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Разработчики:&lt;/b&gt; &lt;a href=&quot;{main_url}&quot;&gt;{authors}&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Домашняя страница:&lt;/b&gt; &lt;a href=&quot;{homepage_url}&quot;&gt;{homepage_url}&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Видео с обзором плагина:&lt;/b&gt; &lt;a href=&quot;{video_url}&quot;&gt;
+{video_url}&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Пожалуйста, сообщайте о багах в&lt;/b&gt; &lt;a href=&quot;{tracker_url}&quot;&gt;багтрекер&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Другие полезные сервисы NextGIS:
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;Удобная выборка актуальных данных из любой точки мира:
+&lt;a href=&quot;{main_url}&quot;&gt;{main_url}&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Полнофункциональный веб-ГИС-сервис:
+&lt;a href=&quot;{main_url}/nextgis-com/plans&quot;&gt;
+{main_url}/nextgis-com/plans&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -104,25 +140,7 @@
     <message>
         <location filename="../qgis_easy_query_about.ui" line="14"/>
         <source>About NextGIS EasyQuery</source>
-        <translation>NextGIS EasyQuery - Информация о модуле</translation>
-    </message>
-    <message>
-        <location filename="../qgis_easy_query_about.ui" line="33"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Sans Serif&apos;; font-size:9pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qgis_easy_query_about.ui" line="47"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Droid Sans&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;NextGIS EasyQuery&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">NextGIS EasyQuery - Информация о модуле</translation>
     </message>
     <message>
         <location filename="../qgis_easy_query.ui" line="224"/>
@@ -133,29 +151,37 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>EasyQueryDialog</name>
     <message>
-        <location filename="../easy_query_dialog.py" line="172"/>
+        <location filename="../easy_query_dialog.py" line="222"/>
         <source>Attention!</source>
         <translation>Внимание!</translation>
     </message>
     <message>
-        <location filename="../easy_query_dialog.py" line="155"/>
+        <location filename="../easy_query_dialog.py" line="205"/>
         <source>Layer must be selected</source>
         <translation>Должен быть выбран слой</translation>
     </message>
     <message>
-        <location filename="../easy_query_dialog.py" line="161"/>
+        <location filename="../easy_query_dialog.py" line="211"/>
         <source>No conditions are set</source>
         <translation>Не заданы условия выборки</translation>
     </message>
     <message>
-        <location filename="../easy_query_dialog.py" line="167"/>
+        <location filename="../easy_query_dialog.py" line="217"/>
         <source>Field must be selected for all conditions</source>
         <translation>У каждого условия должно быть выбрано поле</translation>
     </message>
     <message>
-        <location filename="../easy_query_dialog.py" line="172"/>
+        <location filename="../easy_query_dialog.py" line="222"/>
         <source>Value must be selected for all conditions</source>
         <translation>У каждого условия должно быть задано значение</translation>
+    </message>
+</context>
+<context>
+    <name>QGISEasyQuery</name>
+    <message>
+        <location filename="../qgis_easy_query.py" line="72"/>
+        <source>About</source>
+        <translation>О модуле...</translation>
     </message>
 </context>
 </TS>
