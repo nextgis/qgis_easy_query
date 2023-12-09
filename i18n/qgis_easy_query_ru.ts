@@ -17,31 +17,31 @@
         <location filename="../about_dialog_base.ui" line="40"/>
         <source>&lt;p&gt;{description}&lt;/p&gt;
 &lt;p&gt;{about}&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Developers:&lt;/b&gt; &lt;a href=&quot;{main_url}&quot;&gt;{authors}&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Developers:&lt;/b&gt; &lt;a href=&quot;{main_url}/{utm}&quot;&gt;{authors}&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Homepage:&lt;/b&gt; &lt;a href=&quot;{homepage_url}&quot;&gt;{homepage_url}&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Video with an overview of the plugin:&lt;/b&gt; &lt;a href=&quot;{video_url}&quot;&gt;
 {video_url}&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Please report bugs at&lt;/b&gt; &lt;a href=&quot;{tracker_url}&quot;&gt;bugtracker&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Other helpful services by NextGIS:
 &lt;ul&gt;&lt;li&gt;&lt;b&gt;Convenient up-to-date data extracts for any place in the world:
-&lt;a href=&quot;{main_url}&quot;&gt;{main_url}&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;
+&lt;a href=&quot;{main_url}/{utm}&quot;&gt;{main_url}&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;Fully featured Web GIS service:
-&lt;a href=&quot;{main_url}/nextgis-com/plans&quot;&gt;
-{main_url}/nextgis-com/plans&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;a href=&quot;{main_url}/pricing-base{utm}&quot;&gt;
+{main_url}/pricing-base&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;
 &lt;/p&gt;</source>
         <translation>&lt;p&gt;{description}&lt;/p&gt;
 &lt;p&gt;{about}&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Разработчики:&lt;/b&gt; &lt;a href=&quot;{main_url}&quot;&gt;{authors}&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Разработчики:&lt;/b&gt; &lt;a href=&quot;{main_url}/{utm}&quot;&gt;{authors}&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Домашняя страница:&lt;/b&gt; &lt;a href=&quot;{homepage_url}&quot;&gt;{homepage_url}&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Видео с обзором плагина:&lt;/b&gt; &lt;a href=&quot;{video_url}&quot;&gt;
 {video_url}&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Пожалуйста, сообщайте о багах в&lt;/b&gt; &lt;a href=&quot;{tracker_url}&quot;&gt;багтрекер&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Другие полезные сервисы NextGIS:
 &lt;ul&gt;&lt;li&gt;&lt;b&gt;Удобная выборка актуальных данных из любой точки мира:
-&lt;a href=&quot;{main_url}&quot;&gt;{main_url}&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;
+&lt;a href=&quot;{main_url}/{utm}&quot;&gt;{main_url}&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;Полнофункциональный веб-ГИС-сервис:
-&lt;a href=&quot;{main_url}/nextgis-com/plans&quot;&gt;
-{main_url}/nextgis-com/plans&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;a href=&quot;{main_url}/pricing-base{utm}&quot;&gt;
+{main_url}/pricing-base{&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;
 &lt;/p&gt;</translation>
     </message>
 </context>
@@ -138,11 +138,6 @@
         <translation>Автоматически приблизить карту к результату выборки</translation>
     </message>
     <message>
-        <location filename="../qgis_easy_query_about.ui" line="14"/>
-        <source>About NextGIS EasyQuery</source>
-        <translation type="obsolete">NextGIS EasyQuery - Информация о модуле</translation>
-    </message>
-    <message>
         <location filename="../qgis_easy_query.ui" line="224"/>
         <source>Apply filter to current layer</source>
         <translation>Применить фильтр к текущему слою</translation>
@@ -179,9 +174,9 @@
 <context>
     <name>QGISEasyQuery</name>
     <message>
-        <location filename="../qgis_easy_query.py" line="72"/>
-        <source>About</source>
-        <translation>О модуле...</translation>
+        <location filename="../qgis_easy_query.py" line="64"/>
+        <source>About plugin…</source>
+        <translation>О плагине…</translation>
     </message>
 </context>
 </TS>

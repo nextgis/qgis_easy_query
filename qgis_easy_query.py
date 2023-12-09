@@ -1,32 +1,27 @@
-# -*- coding: utf-8 -*-
+import os
+from os import path
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-from qgis.core import *
-from qgis.core import QgsApplication
 from qgis.PyQt.QtCore import QTranslator, QCoreApplication
+from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
-import json
 
-import os, sys
+from qgis.core import QgsApplication
 
 from .easy_query_dialog import EasyQueryDialog
 
-_current_path = os.path.abspath(os.path.dirname(__file__))
-from os import path
 from . import about_dialog
 
+_current_path = os.path.abspath(os.path.dirname(__file__))
 
-class QGISEasyQuery():
+
+class QGISEasyQuery:
     """QGIS Plugin Implementation."""
 
-    keys_file = os.path.abspath(os.path.join(os.path.dirname(__file__), 'resources', 'keys.json'))
+    keys_file = os.path.abspath(
+        os.path.join(os.path.dirname(__file__), 'resources', 'keys.json')
+    )
 
     def __init__(self, iface):
-        self.plugin_dir = path.dirname(__file__)
-        self._translator = None
-        self.__init_translator()
         # Save reference to the QGIS interface
         self.iface = iface
 
@@ -35,45 +30,40 @@ class QGISEasyQuery():
 
         # Declare instance attributes
         self.actions = []
-        self.menu = u'NextGIS Easy Query'
-
-        self.toolbar = self.iface.addToolBar(u'NextGIS EasyQuery')
-        self.toolbar.setObjectName(u'NextGIS EasyQuery')
+        self.menu = 'NextGIS Easy Query'
 
         self.pluginIsActive = False
 
-        _current_path = os.path.abspath(os.path.dirname(__file__))
-
-        overrideLocale = QSettings().value('locale/overrideFlag', False, type=bool)
-        localeFullName = QSettings().value('locale/userLocale', '')
-        translationPath = os.path.join(_current_path, 'i18n', 'qgis_easy_query_' + localeFullName + '.qm')
-
-        self.localePath = translationPath
-        if QFileInfo(self.localePath).exists():
-            self.translator = QTranslator()
-            self.translator.load(self.localePath)
-            QCoreApplication.installTranslator(self.translator)
+        self._translator = None
+        self.__init_translator()
 
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
 
         _current_path = os.path.abspath(os.path.dirname(__file__))
 
-        easy_query_icon_path = os.path.abspath(os.path.join(_current_path, 'icon.png'))
+        self.toolbar = self.iface.addToolBar('NextGIS EasyQuery')
+        self.toolbar.setObjectName('NextGIS EasyQuery')
+
+        easy_query_icon_path = os.path.abspath(
+            os.path.join(_current_path, 'icon.png')
+        )
         easy_query_icon = QIcon(easy_query_icon_path)
 
-        easy_query_action = QAction(easy_query_icon, u'NextGIS EasyQuery', self.iface.mainWindow())
+        easy_query_action = QAction(
+            easy_query_icon, 'NextGIS EasyQuery', self.iface.mainWindow()
+        )
         easy_query_action.triggered.connect(self.easy_query)
         easy_query_action.setEnabled(True)
         easy_query_action.setStatusTip(u'NextGIS EasyQuery')
         easy_query_action.setWhatsThis(u'NextGIS EasyQuery')
-
-        action_about = QAction(self.tr('About'), self.iface.mainWindow())
-        action_about.triggered.connect(self.about)
         self.toolbar.addAction(easy_query_action)
         self.iface.addPluginToVectorMenu(self.menu, easy_query_action)
-        self.iface.addPluginToVectorMenu(self.menu, action_about)
         self.actions.append(easy_query_action)
+
+        action_about = QAction(self.tr('About plugin…'), self.iface.mainWindow())
+        action_about.triggered.connect(self.about)
+        self.iface.addPluginToVectorMenu(self.menu, action_about)
         self.actions.append(action_about)
 
     # --------------------------------------------------------------------------
@@ -86,13 +76,13 @@ class QGISEasyQuery():
         """Removes the plugin menu item and icon from QGIS GUI."""
 
         for action in self.actions:
-            self.iface.removePluginVectorMenu(
-                u'Easy Query',
-                action)
-            self.iface.removeToolBarIcon(action)
+            self.iface.removePluginVectorMenu('Easy Query', action)
             action.deleteLater()
 
-        del self.toolbar
+        self.actions = []
+        self.toolbar.hide()
+        self.toolbar.deleteLater()
+        self.toolbar = None
 
     # --------------------------------------------------------------------------
 
@@ -118,8 +108,7 @@ class QGISEasyQuery():
             self._translator = translator  # Should be kept in memory
 
         add_translator(path.join(
-            self.plugin_dir, 'i18n',
-            'qgis_easy_query_{}.qm'.format(locale)
+            _current_path, 'i18n', f'qgis_easy_query_{locale}.qm'
         ))
 
     def about(self):
