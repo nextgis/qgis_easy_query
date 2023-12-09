@@ -1,4 +1,5 @@
 import os
+from os import path
 from PyQt5 import uic
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
@@ -9,7 +10,7 @@ from qgis.gui import *
 import processing
 import numpy as np
 from qgis.utils import iface
-from .aboutdialog import AboutDialog
+from . import about_dialog
 
 FORM_CLASS, _ = uic.loadUiType(os.path.abspath(os.path.join(os.path.dirname(__file__), 'qgis_easy_query.ui')))
 
@@ -293,11 +294,12 @@ class EasyQueryDialog(QWidget, FORM_CLASS):
 
     def about(self):
         if not self.helpIsActive:
-            self.dlg = AboutDialog()
-            self.dlg.show()
+            plugin_dir = path.dirname(__file__)
+            self.dialog = about_dialog.AboutDialog(os.path.basename(plugin_dir))
+            self.dialog.show()
             self.helpIsActive = True
         else:
-            self.dlg.show()
+            self.dialog.show()
 
     def cancel(self):
         self.close()
