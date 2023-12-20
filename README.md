@@ -9,7 +9,7 @@ QGIS plugins page: https://plugins.qgis.org/plugins/qgis_easy_query/
 ![easyquery](https://github.com/nextgis/qgis_easy_query/assets/101568545/538ee11c-3c37-4773-ae78-bfd119501fc8)
 
 ## YouTube
--------------
+
 [![GkK-hHRTwsc](https://github.com/nextgis/qgis_easy_query/assets/101568545/8c8ed22f-a802-438e-9750-7a3b66b92554)](https://youtu.be/GkK-hHRTwsc)
 
 ## License
