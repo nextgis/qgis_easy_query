@@ -9,4 +9,5 @@ def classFactory(iface):  # pylint: disable=invalid-name
     """
     #
     from .qgis_easy_query import QGISEasyQuery
+
     return QGISEasyQuery(iface)
