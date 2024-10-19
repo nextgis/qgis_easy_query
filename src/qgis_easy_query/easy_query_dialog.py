@@ -14,7 +14,7 @@ from . import about_dialog
 
 FORM_CLASS, _ = uic.loadUiType(
     os.path.abspath(
-        os.path.join(os.path.dirname(__file__), "qgis_easy_query.ui")
+        os.path.join(os.path.dirname(__file__), "ui/qgis_easy_query.ui")
     )
 )
 

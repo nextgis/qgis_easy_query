@@ -46,7 +46,7 @@ class QGISEasyQuery:
         self.toolbar.setObjectName("NextGIS EasyQuery")
 
         easy_query_icon_path = os.path.abspath(
-            os.path.join(_current_path, "icon.png")
+            os.path.join(_current_path, "icons/icon.png")
         )
         easy_query_icon = QIcon(easy_query_icon_path)
 
