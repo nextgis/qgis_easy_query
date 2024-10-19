@@ -1,10 +1,10 @@
 import os
 from os import path
-from PyQt5 import uic
-from PyQt5.QtGui import *
-from PyQt5.QtCore import *
-from PyQt5.QtNetwork import *
-from PyQt5.QtWidgets import *
+from qgis.PyQt import uic
+from qgis.PyQt.QtGui import *
+from qgis.PyQt.QtCore import *
+from qgis.PyQt.QtNetwork import *
+from qgis.PyQt.QtWidgets import *
 from qgis.core import *
 from qgis.gui import *
 import processing
