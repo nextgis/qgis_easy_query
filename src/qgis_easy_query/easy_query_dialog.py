@@ -189,7 +189,7 @@ class EasyQueryDialog(QWidget, FORM_CLASS):
             )
             unique_values = []
             for value in unique_values_raw:
-                if not type(value) is str:
+                if not isinstance(value, str):
                     continue
                 else:
                     unique_values.append(value)
