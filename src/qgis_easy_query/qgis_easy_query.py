@@ -68,6 +68,15 @@ class QGISEasyQuery:
         self.iface.addPluginToVectorMenu(self.menu, action_about)
         self.actions.append(action_about)
 
+        self.__show_help_action = QAction(
+            easy_query_icon,
+            "NextGIS EasyQuery",
+        )
+        self.__show_help_action.triggered.connect(self.about)
+        plugin_help_menu = self.iface.pluginHelpMenu()
+        assert plugin_help_menu is not None
+        plugin_help_menu.addAction(self.__show_help_action)
+
     # --------------------------------------------------------------------------
 
     def onClosePlugin(self):
