@@ -1,9 +1,9 @@
 [general]
 name=NextGIS EasyQuery
-qgisMinimumVersion=3.16
+qgisMinimumVersion=3.22
 description=Visual constructor for simple attribute queries
 description[ru]=Визуальный конструктор для простых запросов к атрибутам
-version=1.0.4
+version=1.1.0
 author=NextGIS
 email=info@nextgis.com
 about=Plugin is an alternative for Select features using expression tool. The idea is to provide less comprehensive, but more intuitive way to run simple queries.
@@ -13,14 +13,16 @@ repository=https://github.com/nextgis/qgis_easy_query
 tags=vector
 homepage=https://nextgis.com
 category=Vector
-icon=icons/icon.png
+icon=icons/icon.svg
 experimental=False
 deprecated=False
 video=https://youtu.be/GkK-hHRTwsc
 video[ru]=https://youtu.be/VAZOQf2sUWg
 changelog=
-    1.x.x
-        * Added about dialog
+    1.1.0
+        * Updated icon
+        * Updated the "About plugin" dialog
+        * Added plugin item to help menu
     1.0.4 Zooming fix
     1.0.3 Date and datetime support, bug fixes
     1.0.2 Filtering mode added
